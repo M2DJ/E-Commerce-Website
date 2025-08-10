@@ -20,17 +20,21 @@ const Home = () => {
 
     loadProducts();
   }, []);
-  
-  console.log(products)
+
+  console.log(products);
   return (
     <div className="p-3">
-      {/* <div>
+      <div>
         {error ? (
           <p>{error}</p>
         ) : (
-          products.map((pro) => <ProductsCard product={pro} key={pro.id} />)
+          products &&
+          products["products"] &&
+          products["products"].map((pro) => (
+            <ProductsCard product={pro} key={pro.id} />
+          ))
         )}
-      </div> */}
+      </div>
     </div>
   );
 };
