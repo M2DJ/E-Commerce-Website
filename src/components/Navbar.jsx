@@ -2,7 +2,7 @@ import img1 from '../assets/React-Logo.webp'
 
 const Navbar = () => {
   return (
-    <div className='max-h-20 p-2 flex justify-between bg-orange-700'>
+    <div className='max-h-20 p-2 flex justify-between'>
       <div className=''>
         <img src={img1} alt='React logo' className='h-15 max-w-15'/>
       </div>
