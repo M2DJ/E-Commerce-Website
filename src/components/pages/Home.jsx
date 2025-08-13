@@ -4,27 +4,45 @@ import ProductsCard from "../ProductsCard";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const loadProducts = async () => {
       try {
+        setLoading(true);
         const res = await getProducts();
         setProducts(res);
+        setError(null);
       } catch (err) {
-        setError(err);
+        setError("Failed to load products");
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     };
 
     loadProducts();
   }, []);
 
+  if (error) {
+    return <div></div>;
+  }
+
   return (
     <div className="p-3">
+      {error && <p>{error}</p>}
+
       <div className="grid grid-cols-5 gap-3 justify-items-center-safe">
-        {products&&products['products']&&products['products'].map(pro=><ProductsCard product={pro} key={pro.id}/>)}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          products &&
+          products["products"] &&
+          products["products"].map((pro) => (
+            <ProductsCard product={pro} key={pro.id} />
+          ))
+        )}
       </div>
     </div>
   );
