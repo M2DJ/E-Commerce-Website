@@ -30,9 +30,8 @@ const Home = () => {
   }
 
   return (
-    <div className="p-3">
+    <div className="p-3 mb-10">
       {error && <p>{error}</p>}
-
       <div className="grid grid-cols-5 gap-3 justify-items-center-safe">
         {loading ? (
           <p>Loading...</p>
