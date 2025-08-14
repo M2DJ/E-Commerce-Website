@@ -1,16 +1,24 @@
+import { useCartContext } from "../../context/CartContext";
+
 const ProductsCard = ({ product }) => {
-  let name = product.title;
+  const { addToCart, isInCart } = useCartContext();
+
+  const inCart = isInCart(product.id);
+
+  const handleCartClick = () => {
+    addToCart(product);
+  };
 
   return (
     <div
       className="max-w-50 
                     max-h-fit 
                     p-4
-                    border-2
+                    border-3
                     border-transparent
                     hover:shadow-md 
-                    hover:shadow-blue-500/50 
-                    hover:border-2
+                    hover:shadow-blue-500/80 
+                    hover:border-3
                     hover:border-blue-500 
                     hover:rounded-lg
                     flex 
@@ -19,7 +27,9 @@ const ProductsCard = ({ product }) => {
       <div>
         <img className="max-h-30 max-w-30 m-auto" src={product.image} />
         <h1>
-          {name.length > 20 && name.slice(0,50) + "..."}
+          {product.title.length > 50
+            ? product.title.slice(0, 50) + "..."
+            : product.title}
         </h1>
       </div>
       <div className="mb-5">
@@ -47,7 +57,9 @@ const ProductsCard = ({ product }) => {
                       duration-200
                       ease-in-out"
       >
-        <button className="text-white">Add to cart</button>
+        <button className="text-white" onClick={handleCartClick}>
+          Add to Cart
+        </button>
       </div>
     </div>
   );

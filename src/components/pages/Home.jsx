@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../../services/api";
 import ProductsCard from "../ProductsCard";
+import { useCartContext } from "../../../context/CartContext";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const {cart} = useCartContext();
 
   useEffect(() => {
     const loadProducts = async () => {

@@ -7,10 +7,9 @@ const Navbar = () => {
       <div className="">
         <img src={img1} alt="React logo" className="h-15 max-w-15" />
       </div>
-      <div className="w-100 max-h-20 pl-3 text-xl font-semibold flex justify-between items-center">
+      <div className="w-100 max-h-20 text-xl font-semibold flex justify-between items-center">
         <Link to='/'>Home</Link>
         <p>About Us</p>
-        <p>Offers</p>
         <p>Contact Us</p>
       </div>
       <div className="w-45 max-h-20 pr-2 text-xl font-semibold flex justify-between items-center">
