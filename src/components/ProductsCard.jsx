@@ -1,4 +1,4 @@
-import { useCartContext } from "../../context/CartContext";
+import { useCartContext } from "../context/CartContext";
 
 const ProductsCard = ({ product }) => {
   const { addToCart, isInCart } = useCartContext();
@@ -35,32 +35,38 @@ const ProductsCard = ({ product }) => {
       <div className="mb-5">
         <p>{product.price}$</p>
       </div>
-      <div
-        className="   w-40
-                      h-10 
-                      m-auto 
-                      text-center 
-                      text-xl 
-                      shadow-md 
-                      shadow-black 
-                      bg-blue-500 border 
-                      border-blue-500 
-                      rounded-md 
-                      flex 
-                      items-center 
-                      justify-center
-                      hover:scale-105
-                      hover:shadow-lg
-                      hover:text-white
-                      hover:font-bold
-                      transition-all
-                      duration-200
-                      ease-in-out"
-      >
-        <button className="text-white" onClick={handleCartClick}>
-          Add to Cart
-        </button>
-      </div>
+      {inCart ? (
+        <div>
+          <p className="w-40 h-10 flex justify-center items-center font-bold text-2xl text-green-500">In Cart</p>
+        </div>
+      ) : (
+        <div
+          className="   w-40
+                                  h-10 
+                                  m-auto 
+                                  text-center 
+                                  text-xl 
+                                  shadow-md 
+                                  shadow-black 
+                                  bg-blue-500 border 
+                                  border-blue-500 
+                                  rounded-md 
+                                  flex 
+                                  items-center 
+                                  justify-center
+                                  hover:scale-105
+                                  hover:shadow-lg
+                                  hover:text-white
+                                  hover:font-bold
+                                  transition-all
+                                  duration-200
+                                  ease-in-out"
+        >
+          <button className="text-white" onClick={handleCartClick}>
+            Add to Cart
+          </button>
+        </div>
+      )}
     </div>
   );
 };

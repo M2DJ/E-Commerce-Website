@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../../services/api";
 import ProductsCard from "../ProductsCard";
-import { useCartContext } from "../../../context/CartContext";
+import { useCartContext } from "../../context/CartContext";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const {cart} = useCartContext();
+  const { cart } = useCartContext();
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -30,6 +30,8 @@ const Home = () => {
   if (error) {
     return <div></div>;
   }
+
+  console.log(cart);
 
   return (
     <div className="p-3 mb-10">
