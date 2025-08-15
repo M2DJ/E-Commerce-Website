@@ -27,7 +27,7 @@ const Home = () => {
     loadProducts();
   }, []);
 
-  console.log(cart);
+  console.log(products);
   
   if(error){
     return <div className="w-full mt-30 flex flex-col items-center">
@@ -42,9 +42,7 @@ const Home = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          products &&
-          products["products"] &&
-          products["products"].map((pro) => (
+          products.map((pro) => (
             <ProductsCard product={pro} key={pro.id} />
           ))
         )}

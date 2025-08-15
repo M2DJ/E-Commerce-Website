@@ -13,8 +13,8 @@ const Navbar = () => {
         <p>Contact Us</p>
       </div>
       <div className="w-45 max-h-20 pr-2 text-xl font-semibold flex justify-between items-center">
-        <p>My account</p>
         <Link to="/cart">Cart</Link>
+        <p>My account</p>
       </div>
     </div>
   );

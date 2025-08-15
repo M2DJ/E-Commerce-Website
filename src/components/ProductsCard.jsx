@@ -25,11 +25,9 @@ const ProductsCard = ({ product }) => {
                     flex-col"
     >
       <div>
-        <img className="max-h-30 max-w-30 m-auto" src={product.image} />
+        <img className="max-h-30 max-w-30 m-auto" src={product.images[0]} />
         <h1>
-          {product.title.length > 50
-            ? product.title.slice(0, 50) + "..."
-            : product.title}
+          {product.title}
         </h1>
       </div>
       <div className="mb-5">
