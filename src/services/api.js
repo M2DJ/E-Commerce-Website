@@ -6,6 +6,8 @@ export const getProducts = async() =>{
     return data;
 }
 
-export const getCategories = async() => {
-    const res = await fetch(`${BASE_URL}/categories`)
+export const getCategories = async(id) => {
+    const res = await fetch(`${BASE_URL}/categories/${id}/products`);
+    const data = res.json();
+    return data;
 }
