@@ -31,36 +31,38 @@ const Cart = () => {
     );
   } else {
     return (
-      <div className="p-3">
+      <div className="p-3 h-full">
         <div className="flex flex-col items-center">
-          {cart.map((pro) => (
-            <div key={pro.id} className="p-3 flex justify-center">
-              <div className="min-w-200 max-h-36 p-3 flex border rounded-lg">
-                <div className="mr-2">
-                  <img className="max-h-30 max-w-30" src={pro.images[0]} />
-                </div>
-                <div>
-                  <h1 className="text-xl">{pro.title}</h1>
-                  <p className="mb-9 text-lg italic">${pro.price}</p>
-                  <div className="max-w-25 flex justify-between">
-                    <button
-                      className="min-w-6 bg-green-500"
-                      onClick={() => handleIncrease(pro.id)}
-                    >
-                      +
-                    </button>
-                    <p className="w-13 border text-center">{pro.quantity}</p>
-                    <button
-                      className="min-w-6 bg-red-500"
-                      onClick={() => handleDecrease(pro.id)}
-                    >
-                      -
-                    </button>
+          <div className="grow-2">
+            {cart.map((pro) => (
+              <div key={pro.id} className="p-3 flex justify-center">
+                <div className="min-w-200 max-h-36 p-3 flex border rounded-lg">
+                  <div className="mr-2">
+                    <img className="max-h-30 max-w-30" src={pro.images[0]} />
+                  </div>
+                  <div>
+                    <h1 className="text-xl">{pro.title}</h1>
+                    <p className="mb-9 text-lg italic">${pro.price}</p>
+                    <div className="max-w-25 flex justify-between">
+                      <button
+                        className="min-w-6 bg-green-500"
+                        onClick={() => handleIncrease(pro.id)}
+                      >
+                        +
+                      </button>
+                      <p className="w-13 border text-center">{pro.quantity}</p>
+                      <button
+                        className="min-w-6 bg-red-500"
+                        onClick={() => handleDecrease(pro.id)}
+                      >
+                        -
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
           <div>
             <button className="min-w-142 min-h-12 bg-blue-500 text-white border rounded-lg text-2xl">
               Check Out

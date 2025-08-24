@@ -46,8 +46,13 @@ const Home = () => {
   }, [id]);
 
   const handleCategories = (id) => {
-    id === 0 ? setCategories(products) : setId(id);
-  }
+    if(id === 0){
+      setCategories(products); 
+      setId(0);
+    } else {
+      setId(id);
+    }
+  };
 
   if (error) {
     return (
@@ -60,26 +65,61 @@ const Home = () => {
 
   return (
     <div className="p-3 mb-10 flex">
-      <div>
-        <p className="mb-1">Categories</p>
-        <ul className="ml-4">
+      <div className="w-35">
+        <p className="mb-1 text-xl font-bold">Categories</p>
+        <ul
+          className={`
+                        ml-4 
+                        text-lg
+                        `}
+        >
           <li>
-            <button onClick={() => handleCategories(0)}>All</button>
+            <button
+              className={`w-35 text-start hover:font-semibold ${id == 0 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
+              onClick={() => handleCategories(0)}
+            >
+              All
+            </button>
           </li>
           <li>
-            <button onClick={() => handleCategories(1)}>Clothes</button>
+            <button
+              className={`w-35 text-start hover:font-semibold ${id == 1 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
+              onClick={() => handleCategories(1)}
+            >
+              Clothes
+            </button>
           </li>
           <li>
-            <button onClick={() => handleCategories(3)}>Furniture</button>
+            <button
+              className={`w-35 text-start hover:font-semibold ${id == 3 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
+              onClick={() => handleCategories(3)}
+            >
+              Furniture
+            </button>
           </li>
           <li>
-            <button onClick={() => handleCategories(2)}>Electronics</button>
+            <button
+              className={`w-35 text-start hover:font-semibold ${id == 2 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
+              onClick={() => handleCategories(2)}
+            >
+              Electronics
+            </button>
           </li>
           <li>
-            <button onClick={() => handleCategories(4)}>Shoes</button>
+            <button
+              className={`w-35 text-start hover:font-semibold ${id == 4 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
+              onClick={() => handleCategories(4)}
+            >
+              Shoes
+            </button>
           </li>
           <li>
-            <button onClick={() => handleCategories(5)}>Miscellaneous</button>
+            <button
+              className={`w-35 text-start hover:font-semibold ${id == 5 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
+              onClick={() => handleCategories(5)}
+            >
+              Miscellaneous
+            </button>
           </li>
         </ul>
       </div>
