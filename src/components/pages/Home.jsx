@@ -4,7 +4,8 @@ import ProductsCard from "../ProductsCard";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [id, setId] = useState(1);
+  const [categories, setCategories] = useState([]);
+  const [id, setId] = useState(0);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -23,11 +24,15 @@ const Home = () => {
       }
     };
 
+    loadProducts();
+  }, []);
+
+  useEffect(() => {
     const loadCategories = async (id) => {
       try {
         setLoading(true);
         const res = await getCategories(id);
-        setProducts(res);
+        setCategories(res);
         setError(null);
       } catch (err) {
         setError("Failed to load categories");
@@ -37,9 +42,12 @@ const Home = () => {
       }
     };
 
-    loadProducts();
     loadCategories(id);
   }, [id]);
+
+  const handleCategories = (id) => {
+    id === 0 ? setCategories(products) : setId(id);
+  }
 
   if (error) {
     return (
@@ -51,35 +59,38 @@ const Home = () => {
   }
 
   return (
-    <div className="p-3 mb-10">
+    <div className="p-3 mb-10 flex">
       <div>
-        <ul>
+        <p className="mb-1">Categories</p>
+        <ul className="ml-4">
           <li>
-            <button onClick={() => setId(0)}>All</button>
+            <button onClick={() => handleCategories(0)}>All</button>
           </li>
           <li>
-            <button onClick={() => setId(1)}>Clothes</button>
+            <button onClick={() => handleCategories(1)}>Clothes</button>
           </li>
           <li>
-            <button onClick={() => setId(3)}>Furniture</button>
+            <button onClick={() => handleCategories(3)}>Furniture</button>
           </li>
           <li>
-            <button onClick={() => setId(2)}>Electronics</button>
+            <button onClick={() => handleCategories(2)}>Electronics</button>
           </li>
           <li>
-            <button onClick={() => setId(4)}>Shoes</button>
+            <button onClick={() => handleCategories(4)}>Shoes</button>
           </li>
           <li>
-            <button onClick={() => setId(5)}>Miscellaneous</button>
+            <button onClick={() => handleCategories(5)}>Miscellaneous</button>
           </li>
         </ul>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 justify-items-center-safe">
+      <div className="grid grid-cols-3 gap-3 justify-items-center-safe grow-2">
         {loading && <p>Loading...</p>}
-        {products.map((pro) => (
-          <ProductsCard product={pro} key={pro.id} />
-        ))}
+        {id === 0
+          ? products.map((pro) => <ProductsCard product={pro} key={pro.id} />)
+          : categories.map((pro) => (
+              <ProductsCard product={pro} key={pro.id} />
+            ))}
       </div>
     </div>
   );
