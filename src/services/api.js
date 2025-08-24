@@ -11,3 +11,9 @@ export const getCategories = async(id) => {
     const data = res.json();
     return data;
 }
+
+export const checkCategories = async() => {
+    const res = await fetch(`${BASE_URL}/categories`);
+    const data = res.json();
+    return data;
+}

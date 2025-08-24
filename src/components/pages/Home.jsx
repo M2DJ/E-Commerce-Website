@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCategories, getProducts } from "../../services/api";
+import { checkCategories, getCategories, getProducts } from "../../services/api";
 import ProductsCard from "../ProductsCard";
 
 const Home = () => {
@@ -45,6 +45,19 @@ const Home = () => {
     loadCategories(id);
   }, [id]);
 
+  useEffect(() => {
+    const loadCheckcategories = async() => {
+      try{
+        const res = await checkCategories();
+        console.log(res);
+      } catch(e) {
+        console.log(e);
+      }
+    }
+
+    loadCheckcategories();
+  }, [])
+
   const handleCategories = (id) => {
     if(id === 0){
       setCategories(products); 
@@ -75,7 +88,7 @@ const Home = () => {
         >
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 0 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
+              className={`w-35 text-start hover:font-semibold ${id == 0 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1' : ''}`}
               onClick={() => handleCategories(0)}
             >
               All
@@ -83,40 +96,40 @@ const Home = () => {
           </li>
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 1 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
-              onClick={() => handleCategories(1)}
+              className={`w-35 text-start hover:font-semibold ${id == 13 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1' : ''}`}
+              onClick={() => handleCategories(13)}
             >
               Clothes
             </button>
           </li>
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 3 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
-              onClick={() => handleCategories(3)}
+              className={`w-35 text-start hover:font-semibold ${id == 15 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1' : ''}`}
+              onClick={() => handleCategories(15)}
             >
               Furniture
             </button>
           </li>
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 2 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
-              onClick={() => handleCategories(2)}
+              className={`w-35 text-start hover:font-semibold ${id == 14 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1' : ''}`}
+              onClick={() => handleCategories(14)}
             >
               Electronics
             </button>
           </li>
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 4 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
-              onClick={() => handleCategories(4)}
+              className={`w-35 text-start hover:font-semibold ${id == 16 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1' : ''}`}
+              onClick={() => handleCategories(16)}
             >
               Shoes
             </button>
           </li>
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 5 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white' : ''}`}
-              onClick={() => handleCategories(5)}
+              className={`w-35 text-start hover:font-semibold ${id == 17 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1' : ''}`}
+              onClick={() => handleCategories(17)}
             >
               Miscellaneous
             </button>
