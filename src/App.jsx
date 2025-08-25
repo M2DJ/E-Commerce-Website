@@ -10,15 +10,19 @@ import ContactUs from "./components/ContactUs";
 function App() {
   return (
     <>
-      <CartProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/aboutus" element={<AboutUs />}/>
-        </Routes>
-        <ContactUs />
-      </CartProvider>
+      <div className="min-h-[100vh] flex flex-col">
+        <CartProvider>
+          <Navbar />
+          <main className="grow-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/aboutus" element={<AboutUs />}/>
+            </Routes>
+          </main>
+          <ContactUs />
+        </CartProvider>
+      </div>
     </>
   );
 }

@@ -11,8 +11,8 @@ const ProductsCard = ({ product }) => {
 
   return (
     <div
-      className="max-w-50 
-                    max-h-fit 
+      className="max-w-80 
+                    max-h-150 
                     p-4
                     border-3
                     border-transparent
@@ -25,7 +25,7 @@ const ProductsCard = ({ product }) => {
                     flex-col"
     >
       <div>
-        <img className="max-h-30 max-w-30 m-auto" src={product.images[0]} />
+        <img className="max-h-70 max-w-70 m-auto" src={product.images[0]} />
         <h1>
           {product.title}
         </h1>

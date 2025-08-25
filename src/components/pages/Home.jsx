@@ -82,10 +82,7 @@ const Home = () => {
       <div className="w-35">
         <p className="mb-1 text-xl font-bold">Categories</p>
         <ul
-          className={`
-                        ml-4 
-                        text-lg
-                        `}
+          className='ml-4 text-lg'
         >
           <li>
             <button
@@ -138,7 +135,7 @@ const Home = () => {
         </ul>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 justify-items-center-safe grow-2">
+      <div className="grid grid-cols-3 gap-y-5 justify-items-center-safe grow-2">
         {loading && <p>Loading...</p>}
         {id === 0
           ? products.map((pro) => <ProductsCard product={pro} key={pro.id} />)

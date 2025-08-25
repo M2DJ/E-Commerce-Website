@@ -32,8 +32,8 @@ const Cart = () => {
   } else {
     return (
       <div className="p-3 h-full">
-        <div className="flex flex-col items-center">
-          <div className="grow-2">
+        <div className="min-h-[50vh] flex flex-col items-center">
+          <div className="grow-2 max-h-[60vh] overflow-y-scroll">
             {cart.map((pro) => (
               <div key={pro.id} className="p-3 flex justify-center">
                 <div className="min-w-200 max-h-36 p-3 flex border rounded-lg">
