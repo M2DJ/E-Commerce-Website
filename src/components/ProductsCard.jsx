@@ -25,7 +25,7 @@ const ProductsCard = ({ product }) => {
                     flex-col"
     >
       <div>
-        <img className="max-h-70 max-w-70 m-auto" src={product.images[0]} />
+        <img className="max-h-70 max-w-70 m-auto mb-2" src={product.images[0]} />
         <h1>
           {product.title}
         </h1>

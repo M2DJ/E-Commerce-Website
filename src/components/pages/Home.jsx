@@ -1,5 +1,9 @@
-import { useEffect, useState } from "react";
-import { checkCategories, getCategories, getProducts } from "../../services/api";
+import { useEffect, useRef, useState } from "react";
+import {
+  checkCategories,
+  getCategories,
+  getProducts,
+} from "../../services/api";
 import ProductsCard from "../ProductsCard";
 import ContactUs from "../ContactUs";
 
@@ -9,6 +13,7 @@ const Home = () => {
   const [id, setId] = useState(0);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const checkIdOfCategoriesRef = useRef([]);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -47,21 +52,30 @@ const Home = () => {
   }, [id]);
 
   useEffect(() => {
-    const loadCheckcategories = async() => {
-      try{
+    const loadCheckcategories = async () => {
+      try {
         const res = await checkCategories();
-        console.log(res);
-      } catch(e) {
+
+        checkIdOfCategoriesRef.current.length = 0;
+        for (let i = 0; i < 5; i++) {
+          checkIdOfCategoriesRef.current.push({
+            id: res[i].id,
+            name: res[i].name,
+          });
+        }
+        // console.log(res);
+      } catch (e) {
         console.log(e);
       }
-    }
+    };
 
     loadCheckcategories();
-  }, [])
+  }, []);
+  console.log(checkIdOfCategoriesRef);
 
   const handleCategories = (id) => {
-    if(id === 0){
-      setCategories(products); 
+    if (id === 0) {
+      setCategories(products);
       setId(0);
     } else {
       setId(id);
@@ -81,20 +95,37 @@ const Home = () => {
     <div className="p-3 mb-10 flex">
       <div className="w-35">
         <p className="mb-1 text-xl font-bold">Categories</p>
-        <ul
-          className='ml-4 text-lg'
-        >
+        <ul className="ml-4 text-lg">
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 0 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold' : ''}`}
+              className={`w-35 text-start hover:font-semibold ${
+                id == 0
+                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
+                  : ""
+              }`}
               onClick={() => handleCategories(0)}
             >
               All
             </button>
           </li>
-          <li>
+          {checkIdOfCategoriesRef.current.map((cat) => (
+            <li className={`w-35 text-start hover:font-semibold ${
+                id == cat.id
+                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
+                  : ""
+              }`}>
+              <button onClick={() => handleCategories(cat.id)}>
+                {cat.name}
+              </button>
+            </li>
+          ))}
+          {/* <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 13 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold' : ''}`}
+              className={`w-35 text-start hover:font-semibold ${
+                id == 13
+                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
+                  : ""
+              }`}
               onClick={() => handleCategories(13)}
             >
               Clothes
@@ -102,7 +133,11 @@ const Home = () => {
           </li>
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 15 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold' : ''}`}
+              className={`w-35 text-start hover:font-semibold ${
+                id == 15
+                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
+                  : ""
+              }`}
               onClick={() => handleCategories(15)}
             >
               Furniture
@@ -110,7 +145,11 @@ const Home = () => {
           </li>
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 14 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold' : ''}`}
+              className={`w-35 text-start hover:font-semibold ${
+                id == 14
+                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
+                  : ""
+              }`}
               onClick={() => handleCategories(14)}
             >
               Electronics
@@ -118,7 +157,11 @@ const Home = () => {
           </li>
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 16 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold' : ''}`}
+              className={`w-35 text-start hover:font-semibold ${
+                id == 16
+                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
+                  : ""
+              }`}
               onClick={() => handleCategories(16)}
             >
               Shoes
@@ -126,12 +169,16 @@ const Home = () => {
           </li>
           <li>
             <button
-              className={`w-35 text-start hover:font-semibold ${id == 17 ? 'bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold' : ''}`}
+              className={`w-35 text-start hover:font-semibold ${
+                id == 17
+                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
+                  : ""
+              }`}
               onClick={() => handleCategories(17)}
             >
               Miscellaneous
             </button>
-          </li>
+          </li> */}
         </ul>
       </div>
 
