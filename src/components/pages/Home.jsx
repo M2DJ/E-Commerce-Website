@@ -119,66 +119,6 @@ const Home = () => {
               </button>
             </li>
           ))}
-          {/* <li>
-            <button
-              className={`w-35 text-start hover:font-semibold ${
-                id == 13
-                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
-                  : ""
-              }`}
-              onClick={() => handleCategories(13)}
-            >
-              Clothes
-            </button>
-          </li>
-          <li>
-            <button
-              className={`w-35 text-start hover:font-semibold ${
-                id == 15
-                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
-                  : ""
-              }`}
-              onClick={() => handleCategories(15)}
-            >
-              Furniture
-            </button>
-          </li>
-          <li>
-            <button
-              className={`w-35 text-start hover:font-semibold ${
-                id == 14
-                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
-                  : ""
-              }`}
-              onClick={() => handleCategories(14)}
-            >
-              Electronics
-            </button>
-          </li>
-          <li>
-            <button
-              className={`w-35 text-start hover:font-semibold ${
-                id == 16
-                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
-                  : ""
-              }`}
-              onClick={() => handleCategories(16)}
-            >
-              Shoes
-            </button>
-          </li>
-          <li>
-            <button
-              className={`w-35 text-start hover:font-semibold ${
-                id == 17
-                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
-                  : ""
-              }`}
-              onClick={() => handleCategories(17)}
-            >
-              Miscellaneous
-            </button>
-          </li> */}
         </ul>
       </div>
 
