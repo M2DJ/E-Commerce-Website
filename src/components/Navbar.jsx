@@ -9,8 +9,7 @@ const Navbar = () => {
       </div>
       <div className="w-100 max-h-20 text-xl font-semibold flex justify-between items-center">
         <Link to='/'>Home</Link>
-        <p>About Us</p>
-        <p>Contact Us</p>
+        <Link to='/aboutus'>About Us</Link>
       </div>
       <div className="w-45 max-h-20 pr-2 text-xl font-semibold flex justify-between items-center">
         <Link to="/cart">Cart</Link>
