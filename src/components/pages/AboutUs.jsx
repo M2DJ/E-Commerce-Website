@@ -2,7 +2,7 @@ const AboutUs = () => {
   return (
     <div className="p-3 text-xl">
       <div>
-        <p>My name is <span className="font-bold text-2xl">Saif</span></p>
+        <p>I am <span className="font-bold text-2xl">Saif</span></p>
       </div>
       <div>
         and I am semi-beginner front-end developer with a solid foundation in modern
