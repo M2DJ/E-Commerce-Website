@@ -6,6 +6,7 @@ import {
 } from "../../services/api";
 import ProductsCard from "../ProductsCard";
 import ContactUs from "../ContactUs";
+import DarkMode from "../DarkMode";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -120,6 +121,9 @@ const Home = () => {
             </li>
           ))}
         </ul>
+        <div className="mt-15">
+          <DarkMode />
+        </div>
       </div>
 
       <div className="grid grid-cols-3 gap-y-5 justify-items-center-safe grow-2">
