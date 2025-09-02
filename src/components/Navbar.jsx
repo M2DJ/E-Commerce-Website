@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { IoMdCart } from "react-icons/io";
 import img1 from "../assets/React-Logo.webp";
 
 const Navbar = () => {
@@ -12,7 +13,7 @@ const Navbar = () => {
         <Link to='/aboutus'>About Us</Link>
       </div>
       <div className="w-45 max-h-20 pr-2 text-xl font-semibold flex justify-between items-center">
-        <Link to="/cart">Cart</Link>
+        <Link to="/cart"><IoMdCart size={'35'}/></Link>
         <p>My account</p>
       </div>
     </div>

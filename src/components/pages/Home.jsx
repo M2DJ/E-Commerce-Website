@@ -5,8 +5,8 @@ import {
   getProducts,
 } from "../../services/api";
 import ProductsCard from "../ProductsCard";
-import ContactUs from "../ContactUs";
 import DarkMode from "../DarkMode";
+import { useCartContext } from "../../context/CartContext";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -64,7 +64,6 @@ const Home = () => {
             name: res[i].name,
           });
         }
-        // console.log(res);
       } catch (e) {
         console.log(e);
       }
@@ -72,7 +71,6 @@ const Home = () => {
 
     loadCheckcategories();
   }, []);
-  console.log(checkIdOfCategoriesRef);
 
   const handleCategories = (id) => {
     if (id === 0) {
@@ -91,48 +89,46 @@ const Home = () => {
       </div>
     );
   }
-
+  
   return (
-    <div className="p-3 mb-10 flex">
-      <div className="w-35">
-        <p className="mb-1 text-xl font-bold">Categories</p>
-        <ul className="ml-4 text-lg">
-          <li>
-            <button
-              className={`w-35 text-start hover:font-semibold ${
-                id == 0
-                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
-                  : ""
-              }`}
-              onClick={() => handleCategories(0)}
-            >
-              All
-            </button>
-          </li>
-          {checkIdOfCategoriesRef.current.map((cat) => (
-            <li className={`w-35 text-start hover:font-semibold ${
-                id == cat.id
-                  ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
-                  : ""
-              }`}>
-              <button onClick={() => handleCategories(cat.id)}>
-                {cat.name}
+    <div className=''>
+      <div className='p-3 mb-10 flex'>
+        <div className="w-35">
+          <p className="mb-1 text-xl font-bold">Categories</p>
+          <ul className="ml-4 text-lg">
+            <li>
+              <button
+                className={`w-35 text-start hover:font-semibold ${
+                  id == 0
+                    ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
+                    : ""
+                }`}
+                onClick={() => handleCategories(0)}
+              >
+                All
               </button>
             </li>
-          ))}
-        </ul>
-        <div className="mt-15">
-          <DarkMode />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-3 gap-y-5 justify-items-center-safe grow-2">
-        {loading && <p>Loading...</p>}
-        {id === 0
-          ? products.map((pro) => <ProductsCard product={pro} key={pro.id} />)
-          : categories.map((pro) => (
-              <ProductsCard product={pro} key={pro.id} />
+            {checkIdOfCategoriesRef.current.map((cat) => (
+              <li key={cat.id} className={`w-35 text-start hover:font-semibold ${
+                  id == cat.id
+                    ? "bg-gradient-to-r from-blue-500 to-white-500 text-white pl-1 font-semibold transition-all duration-200 ease-in-out"
+                    : ""
+                }`}>
+                <button onClick={() => handleCategories(cat.id)}>
+                  {cat.name}
+                </button>
+              </li>
             ))}
+          </ul>
+        </div>
+        <div className="grid grid-cols-3 gap-y-5 justify-items-center-safe grow-2">
+          {loading && <p>Loading...</p>}
+          {id === 0
+            ? products.map((pro) => <ProductsCard product={pro} key={pro.id} />)
+            : categories.map((pro) => (
+                <ProductsCard product={pro} key={pro.id} />
+              ))}
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const DarkMode = () => {
 
   return (
     <div>
-        <button onClick={() => handleDarkMode()}>{isDark ? <div><FontAwesomeIcon icon={faSun} size='2xl' />Light Mode</div> : <div><FontAwesomeIcon icon={faMoon} size='2xl' />Dark Mode</div>}</button>
+      <button onClick={() => handleDarkMode()}>{isDark ? <div><FontAwesomeIcon icon={faSun} size='2xl' />Light Mode</div> : <div><FontAwesomeIcon icon={faMoon} size='2xl' />Dark Mode</div>}</button>
     </div>
   )
 }
