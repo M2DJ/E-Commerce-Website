@@ -1,8 +1,12 @@
+import Login from "../Login"
 
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div className="p-3">
+        <Login />
+        
+    </div>
   )
 }
 
