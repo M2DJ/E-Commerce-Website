@@ -10,25 +10,27 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import AuthProvider from "./context/AuthContext";
 
 library.add(fas, far, fab);
 
 function App() {
- 
   return (
     <>
       <div className="min-h-[100vh] flex flex-col ">
-        <CartProvider>
-          <Navbar />
-          <main className="grow-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/aboutus" element={<AboutUs />} />
-            </Routes>
-          </main>
-          <ContactUs />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Navbar />
+            <main className="grow-1">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/aboutus" element={<AboutUs />} />
+              </Routes>
+            </main>
+            <ContactUs />
+          </CartProvider>
+        </AuthProvider>
       </div>
     </>
   );
