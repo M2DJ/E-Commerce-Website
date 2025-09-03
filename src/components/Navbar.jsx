@@ -14,7 +14,7 @@ const Navbar = () => {
       </div>
       <div className="w-45 max-h-20 pr-2 text-xl font-semibold flex justify-between items-center">
         <Link to="/cart"><IoMdCart size={'35'}/></Link>
-        <Link to="/profile">Login/Signup</Link>
+        <Link to="/profile">Login/Sign-up</Link>
       </div>
     </div>
   );
