@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const Login = () => {
   return (
@@ -18,7 +19,7 @@ const Login = () => {
         </div>
         <div className="flex mt-4">
             <p className="mr-1">Don't have an account?</p>
-            <p className="text-blue-500 underline">SignUp</p>
+            <Link to="/signup" className="text-blue-500 underline">SignUp</Link>
         </div>
     </div>
   )

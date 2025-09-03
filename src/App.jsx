@@ -12,6 +12,8 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import AuthProvider from "./context/AuthContext";
 import Profile from "./components/pages/Profile";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
 library.add(fas, far, fab);
 
@@ -28,6 +30,8 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/aboutus" element={<AboutUs />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/login" element={<Login />}/>
+                <Route path="/signup" element={<SignUp />}/>
               </Routes>
             </main>
             <ContactUs />
