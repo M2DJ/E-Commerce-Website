@@ -4,14 +4,18 @@ const Cart = () => {
   const { cart, deleteFromCart, increaseQuantity, decreaseQuantity } =
     useCartContext();
 
+  const Amount = cart.reduce((currentTotal, item) => {
+    return item.price * item.quantity + currentTotal;
+  }, 0);
+
   const handleIncrease = (productId) => {
     increaseQuantity(productId);
   };
 
   const handleDecrease = (productId) => {
-    var item = cart.find(pro => pro.id === productId);
+    var item = cart.find((pro) => pro.id === productId);
 
-    if(item.quantity > 1){
+    if (item.quantity > 1) {
       decreaseQuantity(productId);
     } else {
       deleteFromCart(item.id);
@@ -32,7 +36,7 @@ const Cart = () => {
   } else {
     return (
       <div className="p-3 h-full">
-        <div className="min-h-[50vh] flex flex-col items-center">
+        <div className="min-h-[50vh] min-w-100 flex flex-col items-center">
           <div className="grow-2 max-h-[60vh] overflow-y-scroll">
             {cart.map((pro) => (
               <div key={pro.id} className="p-3 flex justify-center">
@@ -63,8 +67,11 @@ const Cart = () => {
               </div>
             ))}
           </div>
+          <div className="w-200 flex">
+            <p>Amount: {Amount}$</p>
+          </div>
           <div>
-            <button className="min-w-142 min-h-12 bg-blue-500 text-white border rounded-lg text-2xl">
+            <button className="min-w-142 min-h-12 bg-blue-500 text-white border rounded-lg text-2xl mt-5">
               Check Out
             </button>
           </div>
