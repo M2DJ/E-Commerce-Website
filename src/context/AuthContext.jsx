@@ -29,6 +29,14 @@ export default function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  function isLoggedIn() {
+    if(currentUser !== null){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   function logout() {
     return signOut(auth);
   }
@@ -59,6 +67,7 @@ export default function AuthProvider({ children }) {
     currentUser,
     signup,
     login,
+    isLoggedIn,
     logout,
     resetPassword,
     updateUserProfile,
