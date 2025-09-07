@@ -5,8 +5,6 @@ import {
   getProducts,
 } from "../../services/api";
 import ProductsCard from "../ProductsCard";
-import DarkMode from "../DarkMode";
-import { useCartContext } from "../../context/CartContext";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
