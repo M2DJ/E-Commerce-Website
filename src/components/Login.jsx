@@ -8,7 +8,10 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 
@@ -17,8 +20,6 @@ const Login = () => {
     };
   }, []);
 
-  const { login } = useAuth();
-  const navigate = useNavigate();
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
@@ -204,7 +205,7 @@ const Login = () => {
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-250 h-20 border border-white bg-blue-400 text-white rounded-lg p-2 ml-2 mb-5"
+              className="w-350 h-20 border border-white bg-blue-400 text-white rounded-lg p-2 ml-2 mb-5"
             />
             <br />
             <label className="text-blue-500 text-5xl font-semibold">
@@ -215,7 +216,7 @@ const Login = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-250 h-20 border border-white bg-blue-400 text-white rounded-lg p-2 ml-2 mb-10"
+              className="w-350 h-20 border border-white bg-blue-400 text-white rounded-lg p-2 ml-2 mb-10"
             />
             <br />
             <div className="flex justify-center mt-17">
