@@ -35,7 +35,7 @@ const ProductsCard = ({ product }) => {
       </div>
       {inCart ? (
         <div>
-          <p className="w-40 h-10 flex justify-center items-center font-bold text-2xl text-green-500">In Cart</p>
+          <p className="flex justify-center items-center font-bold text-2xl text-green-500">In Cart</p>
         </div>
       ) : (
         <div
