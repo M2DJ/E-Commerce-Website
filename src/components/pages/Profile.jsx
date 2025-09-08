@@ -2,10 +2,9 @@ import Login from "../Login";
 import { useAuth } from "../../context/AuthContext";
 import { FaUser } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
+import { useState, useEffect } from "react";
 
 const Profile = () => {
-  const { isLoggedIn, logout } = useAuth();
-  const logged = isLoggedIn();
 
   if (logged) {
     return (
@@ -15,7 +14,10 @@ const Profile = () => {
             <FaUser size={"65"} />
           </div>
           <div className="">
-            <button onClick={() => logout()} className="flex items-center gap-2 text-2xl font-semibold">
+            <button
+              onClick={() => logout()}
+              className="flex items-center gap-2 text-2xl font-semibold"
+            >
               Logout
               <IoIosLogOut size={"30"} />
             </button>
