@@ -19,14 +19,15 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+  
   const handleBurgerMenu = () => {
     setIsMenuClicked((prev) => !prev);
   };
 
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
 
   if (windowWidth >= 320 && windowWidth <= 375) {
     return (
