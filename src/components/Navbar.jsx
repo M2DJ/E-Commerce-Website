@@ -66,13 +66,15 @@ const Navbar = () => {
                 <img src={img1} alt="React logo" className="h-20 max-w-20" />
               </div>
               <div className="text-white text-xl mt-2">
-                {logged ? (
-                  <Link to="/profile">
-                    <FaUser size={"27"} />
-                  </Link>
-                ) : (
-                  <Link to="/login">Login/Sign-up</Link>
-                )}
+                <button onClick={handleBurgerMenu}>
+                  {logged ? (
+                    <Link to="/profile">
+                      <FaUser size={"27"} />
+                    </Link>
+                  ) : (
+                    <Link to="/login">Login/Sign-up</Link>
+                  )}
+                </button>
               </div>
             </div>
           </div>
