@@ -1,12 +1,26 @@
+import { useEffect, useState } from "react";
 import { useCartContext } from "../../context/CartContext";
 
 const Cart = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { cart, deleteFromCart, increaseQuantity, decreaseQuantity } =
     useCartContext();
 
   const Amount = cart.reduce((currentTotal, item) => {
     return item.price * item.quantity + currentTotal;
   }, 0);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
 
   const handleIncrease = (productId) => {
     increaseQuantity(productId);
@@ -25,11 +39,11 @@ const Cart = () => {
   if (cart.length == 0) {
     return (
       <div className="w-full h-[400px] flex justify-center items-center">
-        <div className="min-w-[450px] min-h-[250px] text-center rounded-lg bg-gray-300 flex flex-col justify-center">
-          <h1 className="text-red-500 text-4xl font-bold mb-5">
+        <div className={`${windowWidth <= 320 || windowWidth <=375 ? 'max-w-[290px]' : windowWidth <= 768 ? 'max-w-[350px]' : windowWidth >= 1024 && windowWidth <= 1440 ? 'max-w-[450px]' : 'max-w-[950px] min-h-[350px]'} min-h-[250px] text-center rounded-lg bg-gray-300 flex flex-col justify-center`}>
+          <h1 className={`text-red-500 ${windowWidth <= 320 || windowWidth <=375 ? 'text-2xl' : windowWidth <= 768 ? 'text-3xl' : windowWidth >= 1024 && windowWidth <= 1440 ? 'text-5xl' : 'text-8xl'} font-bold mb-5`}>
             No items in cart yet
           </h1>
-          <p>Start adding items to your cart and you will see them here!</p>
+          <p className={`${windowWidth > 1440 && 'text-3xl mt-2'}`}>Start adding items to your cart and you will see them here!</p>
         </div>
       </div>
     );
