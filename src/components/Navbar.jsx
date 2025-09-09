@@ -95,11 +95,11 @@ const Navbar = () => {
         <div className="">
           <img src={img1} alt="React logo" className="h-15 max-w-15" />
         </div>
-        <div className="w-50 max-h-20 text-xl font-semibold flex justify-between items-center">
+        <div className="w-38 max-h-20 text-xl font-semibold flex justify-between items-center">
           <Link to="/">Home</Link>
           <Link to="/aboutus">About Us</Link>
         </div>
-        <div className="w-50 max-h-20 pr-2 text-xl font-semibold flex justify-between items-center">
+        <div className="w-45 max-h-20 pr-2 text-xl font-semibold flex justify-between items-center">
           <Link to="/cart">
             <IoMdCart size={"35"} />
           </Link>
