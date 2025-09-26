@@ -5,7 +5,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { useState, useEffect } from "react";
 
 const Profile = () => {
-  const {isLoggedIn} = useAuth();
+  const {isLoggedIn, logout} = useAuth();
 
   if (isLoggedIn) {
     return (
