@@ -5,8 +5,9 @@ import { IoIosLogOut } from "react-icons/io";
 import { useState, useEffect } from "react";
 
 const Profile = () => {
+  const {isLoggedIn} = useAuth();
 
-  if (logged) {
+  if (isLoggedIn) {
     return (
       <div className="p-3">
         <div className="flex flex-col items-center">
